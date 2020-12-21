@@ -3,6 +3,7 @@ package pl.kate.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.kate.entity.Order;
+import pl.kate.entity.Product;
 import pl.kate.service.OrderService;
 import java.net.URI;
 import java.util.List;
@@ -20,13 +21,20 @@ public class OrderController {
         return ResponseEntity.ok(orderService.findAll());
     }
 
-    @GetMapping
+    @GetMapping("/order/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable int id){
         return orderService.getOrder(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
 
     }
+
+    /*@GetMapping("/{id}")
+    public ResponseEntity<Product> getProduct(@PathVariable int id) {
+        return productService.getProductById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }*/
 
     @PostMapping
     public ResponseEntity<Order> saveOrder(@RequestBody Order order){

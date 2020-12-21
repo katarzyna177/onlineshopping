@@ -28,21 +28,39 @@ public class ProductController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    /*@PutMapping("/product/{id}")
+    @PutMapping("/product/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product updateProduct){
-        if(!productService.existsById(id)){
+        if(!productService.productExistsById(id)){
             return ResponseEntity.notFound().build();
         }
         updateProduct.setId(id);
         productService.save(updateProduct);
         return ResponseEntity.noContent().build();
+    }
+
+    /*@PutMapping("/products{id}")
+    ResponseEntity<?> updateProduct(@PathVariable int id, @RequestBody Product toUpdate){
+        if(!repository.existById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        toUpdate.setId(id);
+        repository.save(toUpdate);
+        return ResponseEntity.noContent().build();
     }*/
 
-    @PostMapping
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product){
-        productService.save(product);
-        return ResponseEntity.created(URI.create("/" + product.getId())).build();
+    @PostMapping("/products")
+    public ResponseEntity<Product> saveProduct(@RequestBody Product toCreateProduct){
+        Product result = productService.save(toCreateProduct);
+        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
+
+
+
+    /*@PostMapping("/products")
+    ResponseEntity<Product> createProduct(@RequestBody Product toCreate){
+        Product result = repository.save(toCreate);
+        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
+    }*/
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable int id){

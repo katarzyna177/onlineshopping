@@ -23,8 +23,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public void save(User user){
-        userRepository.save(user);
+    public User save(User user){
+        return userRepository.save(user);
     }
 
     public void delete(int id){

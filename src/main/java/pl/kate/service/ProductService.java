@@ -29,18 +29,22 @@ public class ProductService {
         return productRepository.findByName(name);
     }
 
-    public void save(Product product){
-        productRepository.save(product);
+    public Product save(Product product){
+        return productRepository.save(product);
     }
 
     public void delete(int id){
         productRepository.deleteById(id);
     }
 
-    /*
-    - public Product saveExistingProduct
-    - public boolean existsById
-    */
+    public boolean productExistsById(int id) {
+        if(productRepository.existsById(id)){
+            return true;
+        }
+        return false;
+    }
+
+    //TODO: public Product saveExistingProduct
 
 }
 

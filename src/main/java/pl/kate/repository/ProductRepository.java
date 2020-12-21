@@ -8,6 +8,5 @@ import pl.kate.entity.Product;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Product findByName(String name);
-    boolean existsById(Integer id);
-
+    //boolean productExistsById(Integer id);
 }
