@@ -4,7 +4,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.kate.entity.Product;
 import pl.kate.service.ProductService;
-
 import java.net.URI;
 import java.util.List;
 
@@ -38,29 +37,11 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    /*@PutMapping("/products{id}")
-    ResponseEntity<?> updateProduct(@PathVariable int id, @RequestBody Product toUpdate){
-        if(!repository.existById(id)) {
-            return ResponseEntity.notFound().build();
-        }
-        toUpdate.setId(id);
-        repository.save(toUpdate);
-        return ResponseEntity.noContent().build();
-    }*/
-
     @PostMapping("/products")
     public ResponseEntity<Product> saveProduct(@RequestBody Product toCreateProduct){
         Product result = productService.save(toCreateProduct);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
-
-
-
-    /*@PostMapping("/products")
-    ResponseEntity<Product> createProduct(@RequestBody Product toCreate){
-        Product result = repository.save(toCreate);
-        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
-    }*/
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> delete(@PathVariable int id){

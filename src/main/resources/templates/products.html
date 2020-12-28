@@ -14,7 +14,9 @@
 
     <!--/*@thymesVar id="product" type="pl.kate.OnlineShoppingApplication"*/-->
     <section class="products" th:object="${product}">
+        <!--/*@thymesVar id="productList" type="pl.kate.entity.Product"*/-->
         <div class="product" th:each="product : ${productList}">
+            <!--/*@thymesVar id="id" type="pl.kate.service.ProductService"*/-->
             <p class="name" th:text="${product.id}">Product ID</p>
             <p class="name" th:text="${product.name}">Name</p>
             <p class="name" th:text="${product.img}">IMG</p>

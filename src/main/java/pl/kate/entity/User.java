@@ -1,6 +1,7 @@
 package pl.kate.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,10 @@ public class User {
     private String password;
     private String address;
     private int mobile;
+    @OneToMany
+    @JoinTable(name = "users_orders", joinColumns = { @JoinColumn(name = "id_user") }, inverseJoinColumns = {
+            @JoinColumn(name = "id_order") })
+    private Set<Order> orders;
 
     public User() {
     }
@@ -84,6 +89,14 @@ public class User {
 
     public void setMobile(int mobile) {
         this.mobile = mobile;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
