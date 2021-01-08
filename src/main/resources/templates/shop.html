@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo products</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron home-jumbo">
+            <div class="container text-center text-white jumbo-container">
+                <h1 class="display-3">Moje produkty</h1>
+            </div>
+        </div>
+        <!--/*@thymesVar id="products" type="pl.kate.entity.Product"*/-->
+        <section class="products" th:object="${products}">
+            <div class="product" th:each="product : ${products}">
+                <p class="name" th:text="*{id}">Product ID</p>
+                <p class="name" th:text="*{name}">Name</p>
+                <p class="name" th:text="*{img}">IMG</p>
+                <p class="price" th:text="*{price}">Price</p>
+                <p class="name" th:text="*{category}">Category</p>
+                <p class="description" th:text="*{description}">Desc</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
