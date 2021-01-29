@@ -1,11 +1,10 @@
-package pl.kate.repository;
+package pl.kate.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.kate.entity.Product;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Product findByName(String name);
     //boolean productExistsById(Integer id);

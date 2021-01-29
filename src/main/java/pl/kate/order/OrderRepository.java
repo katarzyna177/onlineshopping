@@ -1,10 +1,10 @@
-package pl.kate.repository;
+package pl.kate.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.kate.entity.User;
+import pl.kate.order.Order;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }

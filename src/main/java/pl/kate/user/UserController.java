@@ -1,12 +1,12 @@
-package pl.kate.controller;
+package pl.kate.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pl.kate.entity.User;
-import pl.kate.service.UserService;
+import pl.kate.user.User;
+import pl.kate.user.UserService;
 
 import java.net.URI;
 import java.util.List;
@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Optional<User>> getUserId(int id){
+    public ResponseEntity<Optional<User>> getUserId(long id){
         return ResponseEntity.ok(userService.getUser(id));
     }
 

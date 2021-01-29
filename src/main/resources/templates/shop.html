@@ -12,7 +12,7 @@
                 <h1 class="display-3">Moje produkty</h1>
             </div>
         </div>
-        <!--/*@thymesVar id="products" type="pl.kate.entity.Product"*/-->
+        <!--/*@thymesVar id="products" type="pl.kate.product.Product"*/-->
         <section class="products" th:object="${products}">
             <div class="product" th:each="product : ${products}">
                 <p class="name" th:text="*{id}">Product ID</p>

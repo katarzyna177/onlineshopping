@@ -1,8 +1,8 @@
-package pl.kate.service;
+package pl.kate.order;
 
 import org.springframework.stereotype.Service;
-import pl.kate.entity.Order;
-import pl.kate.repository.OrderRepository;
+import pl.kate.order.Order;
+import pl.kate.order.OrderRepository;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ public class OrderService {
         return orderRepository.findAll();
     }
 
-    public Optional<Order> getOrder(int id){
+    public Optional<Order> getOrder(long id){
         return orderRepository.findById(id);
     }
 

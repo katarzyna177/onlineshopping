@@ -1,4 +1,7 @@
-package pl.kate.entity;
+package pl.kate.user;
+
+import pl.kate.notification.Observer;
+import pl.kate.order.Order;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -10,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    private int id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -25,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String firstName, String lastName, String email, String password, String address, int mobile) {
+    public User(Long id, String firstName, String lastName, String email, String password, String address, int mobile) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,11 +38,11 @@ public class User {
         this.mobile = mobile;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -111,4 +114,5 @@ public class User {
                 ", mobile=" + mobile +
                 '}';
     }
+
 }

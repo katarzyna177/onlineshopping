@@ -1,10 +1,9 @@
-package pl.kate.controller;
+package pl.kate.order;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.kate.entity.Order;
-import pl.kate.entity.Product;
-import pl.kate.service.OrderService;
+import pl.kate.order.Order;
+import pl.kate.order.OrderService;
 import java.net.URI;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/{id}")
-    public ResponseEntity<Order> getOrder(@PathVariable int id){
+    public ResponseEntity<Order> getOrder(@PathVariable long id){
         return orderService.getOrder(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

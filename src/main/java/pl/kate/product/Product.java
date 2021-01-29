@@ -1,4 +1,6 @@
-package pl.kate.entity;
+package pl.kate.product;
+
+import pl.kate.order.Order;
 
 import javax.persistence.*;
 
@@ -9,7 +11,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "id_product")
-    private int id;
+    private Long id;
     private String name;
     private String img;
     private double price;
@@ -22,7 +24,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, String name, String img, double price, String category, String description) {
+    public Product(Long id, String name, String img, double price, String category, String description) {
         this.id = id;
         this.name = name;
         this.img = img;
@@ -31,11 +33,11 @@ public class Product {
         this.description = description;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

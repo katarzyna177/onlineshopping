@@ -1,8 +1,7 @@
-package pl.kate.service;
+package pl.kate.user;
 
 import org.springframework.stereotype.Service;
-import pl.kate.entity.User;
-import pl.kate.repository.UserRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +18,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUser(int id){
+    public Optional<User> getUser(long id){
         return userRepository.findById(id);
     }
 
@@ -27,7 +26,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void delete(int id){
+    public void delete(long id){
         userRepository.deleteById(id);
     }
 }

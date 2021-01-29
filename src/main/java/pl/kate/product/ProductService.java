@@ -1,9 +1,8 @@
-package pl.kate.service;
+package pl.kate.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.kate.entity.Product;
-import pl.kate.repository.ProductRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(int id){
+    public Optional<Product> getProductById(long id){
         return productRepository.findById(id);
     }
 
@@ -33,11 +32,11 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void delete(int id){
+    public void delete(long id){
         productRepository.deleteById(id);
     }
 
-    public boolean productExistsById(int id) {
+    public boolean productExistsById(long id) {
         if(productRepository.existsById(id)){
             return true;
         }

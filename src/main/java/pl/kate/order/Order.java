@@ -1,6 +1,10 @@
-package pl.kate.entity;
+package pl.kate.order;
 
+import pl.kate.product.Product;
+import pl.kate.notification.Observer;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -10,8 +14,10 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order")
-    private int id;
-    private String PaymentType;
+    private Long id;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+    private String paymentType;
     private String deliveryAddress;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
     private Set<Product> products;
@@ -19,26 +25,35 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, String paymentType, String deliveryAddress) {
+    public Order(Long id, OrderStatus orderStatus, String paymentType, String deliveryAddress) {
         this.id = id;
-        PaymentType = paymentType;
+        this.orderStatus = orderStatus;
+        this.paymentType = paymentType;
         this.deliveryAddress = deliveryAddress;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
     public String getPaymentType() {
-        return PaymentType;
+        return paymentType;
     }
 
     public void setPaymentType(String paymentType) {
-        PaymentType = paymentType;
+        this.paymentType = paymentType;
     }
 
     public String getDeliveryAddress() {
@@ -61,8 +76,10 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", PaymentType='" + PaymentType + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", paymentType='" + paymentType + '\'' +
                 ", deliveryAddress='" + deliveryAddress + '\'' +
                 '}';
     }
+
 }

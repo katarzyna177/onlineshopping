@@ -1,9 +1,9 @@
-package pl.kate.controller;
+package pl.kate.product;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.kate.entity.Product;
-import pl.kate.service.ProductService;
+import pl.kate.product.Product;
+import pl.kate.product.ProductService;
 import java.net.URI;
 import java.util.List;
 
@@ -21,14 +21,14 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable int id) {
+    public ResponseEntity<Product> getProduct(@PathVariable long id) {
         return productService.getProductById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/product/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product updateProduct){
+    public ResponseEntity<Product> updateProduct(@PathVariable long id, @RequestBody Product updateProduct){
         if(!productService.productExistsById(id)){
             return ResponseEntity.notFound().build();
         }
@@ -44,7 +44,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Product> delete(@PathVariable int id){
+    public ResponseEntity<Product> delete(@PathVariable long id){
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }
